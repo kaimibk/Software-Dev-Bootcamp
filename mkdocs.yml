@@ -1,9 +1,37 @@
 site_name: Software Developer Bootcamp
 site_description: Kaimi's Software Developer Bootcamp Materials
 site_url: https://bootcamp.kaimi.dev
+repo_url: https://github.com/kaimibk/Software-Dev-Bootcamp
 
 theme:
   name: material
+  # Palette toggle for light mode
+  palette:
+    - scheme: default
+      primary: orange
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.indexes
+    - navigation.tracking
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - header.autohide
 
 plugins: 
   - search
@@ -15,3 +43,37 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - admonition
+  - footnotes
+  - toc:
+      permalink: true
+  - tables
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+nav:
+  - Home: index.md
+  - Module 1:
+    - module-1/index.md
+    - Week 1:
+      - module-1/week-1/index.md
+      - Session 1: module-1/week-1/session-1.md
+      - Session 2: module-1/week-1/session-2.md
+    - Week 2:
+      - module-1/week-2/index.md
+      - Session 1: module-1/week-2/session-1.md
+      - Session 2: module-1/week-2/session-2.md
+  - Module 2:
+    - module-2/index.md
+  - Module 3:
+    - module-3/index.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/web-awesome
+      link: https://kaimi.dev
+    - icon: fontawesome/brands/github
+      link: https://github.com/kaimibk/
