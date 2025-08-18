@@ -1,5 +1,5 @@
 site_name: Software Developer Bootcamp
-site_description: Kaimi's Software Developer Bootcamp Materials
+site_description: Kaʻimi's Software Developer Bootcamp
 site_url: https://bootcamp.kaimi.dev
 repo_url: https://github.com/kaimibk/Software-Dev-Bootcamp
 
@@ -53,6 +53,8 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 nav:
   - Home: index.md
