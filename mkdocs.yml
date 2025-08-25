@@ -20,6 +20,7 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
   features:
+    - navigation.instant
     - navigation.sections
     - navigation.expand
     - navigation.path
@@ -67,16 +68,12 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Module 1:
+  - "Module 1: Foundational Tools & Environment":
     - module-1/index.md
-    - Week 1:
-      - module-1/week-1/index.md
-      - Session 1: module-1/week-1/session-1.md
-      - Session 2: module-1/week-1/session-2.md
-    - Week 2:
-      - module-1/week-2/index.md
-      - Session 1: module-1/week-2/session-1.md
-      - Session 2: module-1/week-2/session-2.md
+    - Git & GitHub: module-1/session-1.md
+    - VS Code Basics: module-1/session-2.md
+    - Docker Fundamentals: module-1/session-3.md
+    - Docker Compose & DevContainer: module-1/session-4.md
   - Module 2:
     - module-2/index.md
   - Module 3:

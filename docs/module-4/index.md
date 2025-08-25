@@ -1,14 +1,14 @@
 # Module 3: Architecture Design
 
-## Week 8: Introduction to APIs
+## Introduction to APIs
 
 Session 1: Concepts of APIs (REST, GraphQL, gRPC, etc.)
 
 Session 2: We'll introduce the FastAPI framework, a modern web framework for building APIs. Building on our advanced Python skills, we'll design and create our first API endpoints.
 
 
-## Week 9: Architecture Design Patterns
+## Architecture Design Patterns
 
-Session 1: We'll explore different system architectures, comparing the benefits and drawbacks of monolithic vs. microservice designs.
+Session 3: We'll explore different system architectures, comparing the benefits and drawbacks of monolithic vs. microservice designs.
 
-Session 2: This session covers the principles of event-driven vs. message-driven architectures. We'll discuss how asynchronous communication through message queues can help build scalable and decoupled systems.
+Session 4: This session covers the principles of event-driven vs. message-driven architectures. We'll discuss how asynchronous communication through message queues can help build scalable and decoupled systems.

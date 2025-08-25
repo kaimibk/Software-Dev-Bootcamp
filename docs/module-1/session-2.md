@@ -26,7 +26,7 @@ Let's begin by familiarizing ourselves with the VS Code interface and opening ou
 
 ### Installing VS Code and the Remote Development Extension
 
-- Install VS Code: If you haven't already, download and install VS Code from the official website: [code.visualstudio.com](code.visualstudio.com).
+- Install VS Code: If you haven't already, download and install VS Code from the official website: [code.visualstudio.com](https://code.visualstudio.com).
 - Install Remote Development Extension: This powerful extension pack allows you to open any folder in a container.
     - Open VS Code.
     - Click the "Extensions" icon on the left sidebar (looks like four squares, one detached).
