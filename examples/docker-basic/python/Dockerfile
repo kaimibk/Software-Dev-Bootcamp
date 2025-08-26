@@ -1,6 +1,5 @@
 # Use an official Python runtime as a parent image (1)
 FROM python:3.12-slim-bookworm
-# FROM quay.io/jupyter/minimal-notebook:python-3.12
 
 # Set the working directory in the container (2)
 WORKDIR /app
