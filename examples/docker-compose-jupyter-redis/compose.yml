@@ -1,0 +1,34 @@
+services:
+  # Define the Jupyter service
+  jupyter:
+    # You don't need to build the image if you use a pre-built one
+    # image: quay.io/jupyter/minimal-notebook:python-3.12
+    # However, if you want to build your own image, uncomment the lines below
+    build:
+      context: .  # Path to the directory containing the Dockerfile (current directory)
+      dockerfile: Dockerfile  # Name of the Dockerfile
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/home/jovyan/app  # COPY current directory to /home/jovyan/app in the container
+    working_dir: /home/jovyan/app  # Set working directory inside the container
+    environment:
+      FOO: bar  # Example environment variable
+    # The following is optional, but useful for Jupyter
+    command: start-notebook.sh --NotebookApp.token=''  # Start Jupyter without a token
+    networks:
+      - my-network  # Connect to a custom network
+
+  # Compose is very useful to run multiple services together
+  # Here is an example of a simple Redis service
+  redis:
+    image: "redis:6.0-alpine"
+    container_name: my-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - my-network  # Connect to a custom network
+
+networks:
+  my-network:
+    driver: bridge  # Use the default bridge network driver
