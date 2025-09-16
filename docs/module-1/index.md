@@ -15,5 +15,8 @@ Students will be introduced to Visual Studio Code (VS Code), our primary develop
 [Session 3: Docker Fundamentals 🐳](./session-3.md)
 This session introduces Docker, explaining the difference between containers and virtual machines. Students will write their first Dockerfile to containerize a simple Python application.
 
-[Session 4: Orchestration & Reproducible Environments ⚙️](./session-4.md)
-Building on the first session, we'll introduce Docker Compose to manage multi-service applications (e.g., a web app and a database). The session will culminate in setting up DevContainers for our course, ensuring every student has an identical, reproducible development environment from this point on.
+[Session 4: Container Orchestration ⚙️](./session-4.md)
+Building on the first session, we'll introduce Docker Compose to manage multi-service applications (e.g., a web app and a database). 
+
+[Session 5: Reproducible Environments](./session-5.md)
+The Docker lessons will culminate in setting up DevContainers for our course, ensuring every user can build identical, reproducible development environments from this point on.
