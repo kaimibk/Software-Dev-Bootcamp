@@ -1,4 +1,4 @@
-# Organizing and Designing Code
+# Advanced Python Concepts - Organizing and Designing Code
 
 We learned that classes and objects provide a powerful way to model real-world concepts. Today, we're going to expand on that by learning how to structure entire applications. We'll go from single classes to well-organized programs, and we'll introduce design patterns that make our code more flexible and scalable.
 
@@ -45,7 +45,7 @@ Instead, let's create a well-organized **package** for our project.
 
 3. Finally, we'll open `main.py` and demonstrate how easy it is to import and use classes from any module within the package:
 
-    ```python linenums="1"
+    ```python title="main.py" linenums="1"
     from my_project.core.components import Engine
     from my_project.transport.cars import Car
 
