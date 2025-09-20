@@ -75,7 +75,16 @@ We've already learned about inheritance, but two other powerful OOP concepts are
 
         def stop(self):
             return "Engine stopped."
+
+    if __name__ == "__main__":
+        engine = Engine()
+        print("Start your engines!")
+        print(engine.start())
     ```
+
+!!! question "What is `if __name__ == "__main__"`?"
+
+    This a convinent way to distinguish functionality between when you _import_ the module and when you _run_ it directly - and it is completely **optional**. It is incredibly useful for debugging purposes or documeting example usage. In other words, when you import from `core/components.py`, everything above the conditional is executed/defined, however the conditional itself only evaluates if you execute `core/components.py` directly. Now your file is accessible as both a stand-alone script as well as an importable module.
 
 2.  Now, in `transport/cars.py`, we'll create a `Car` class that **has an** `Engine`. We do this by creating an instance of the `Engine` class within the `Car`'s `__init__` method.
 
@@ -92,6 +101,11 @@ We've already learned about inheritance, but two other powerful OOP concepts are
 
         def stop(self):
             return self.engine.stop()
+
+    if __name__ == "__main__":
+        car = Car()
+        car.start()
+        car.stop()
     ```
 
 ### **Encapsulation (Hiding Complexity)**
