@@ -75,8 +75,10 @@ nav:
     - Docker Fundamentals: module-1/session-3.md
     - Docker Compose: module-1/session-4.md
     - Dev Containers: module-1/session-5.md
-  - Module 2:
+  - "Module 2: Advanced Python Programming":
     - module-2/index.md
+    - Advanced Functions and Object Oriented Programming: module-2/session-1.md
+    - Organizing and Designing Code: module-2/session-2.md
   - Module 3:
     - module-3/index.md
 

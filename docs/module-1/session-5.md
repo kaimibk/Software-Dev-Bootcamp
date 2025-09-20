@@ -155,9 +155,3 @@ RUN pip install -r /requirements.txt
 ## Suggested Readings & Resources:
 
 - **VSCode Dev Containers Documentation:** https://code.visualstudio.com/docs/devcontainers/containers
-
------
-
-### Next Steps & Questions
-
-DevContainers are the ultimate tool for ensuring a consistent and reproducible development experience for yourself and your team. This concludes our foundational module on tools and environments. Next week, we'll dive into advanced Python concepts\!
