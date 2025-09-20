@@ -73,7 +73,8 @@ nav:
     - Git & GitHub: module-1/session-1.md
     - VS Code Basics: module-1/session-2.md
     - Docker Fundamentals: module-1/session-3.md
-    - Docker Compose & DevContainer: module-1/session-4.md
+    - Docker Compose: module-1/session-4.md
+    - Dev Containers: module-1/session-5.md
   - Module 2:
     - module-2/index.md
   - Module 3:

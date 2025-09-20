@@ -242,7 +242,7 @@ FROM python:3.12-slim-bookworm
 
 - Consume the signal: Go back to the jupyterlab service in your browser, create a new notebook with the following code.
 
-```python
+```python title="consumer.ipynb" linenums="1"
 import redis
 import time
 
