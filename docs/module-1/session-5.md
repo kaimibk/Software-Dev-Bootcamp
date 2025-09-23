@@ -105,16 +105,16 @@ RUN pip install -r /requirements.txt
 
 ## Recommended Practice Exercises:
 
-### **Create a DevContainer for the Jupyter/Redis Project:**
+### Understand Previous Example
+
+Take a look at the `examples/vscode-basic` example project, understand how the devcontainer was set up, and try to run it again.
+
+### Create a DevContainer for the Jupyter/Redis Project
 
 - Go to your `examples/docker-compose-jupyter-redis` folder from the last session.
-
 - Create a new folder inside it named **`.devcontainer`**.
-
 - Inside the `.devcontainer` folder, create a new file named `devcontainer.json`.
-
 - Your `devcontainer.json` file needs to be configured to use your existing `compose.yml` file and attach to the **Jupyter** service.
-
 - Your configuration should look something like this:
 
 ```json title="devcontainer.json" linenums="1"
@@ -128,6 +128,7 @@ RUN pip install -r /requirements.txt
             "extensions": [
             "ms-python.python",
             "ms-toolsai.jupyter"
+            // Try to add some other extensions!
             ]
         }
     }
@@ -143,7 +144,7 @@ RUN pip install -r /requirements.txt
 !!! info "Multiple Compose Files"
     Although not shown here, sometimes it is useful to define multiple compose files - one for production and another for development. Since the `dockerComposeFile` parameter allows you to specify an array, you an actually _compose_ multiple compose files. In other words, start from a "prod" definition and override with select "dev" specific configurations. We will see this in action in future lessons.
 
-**Verify Your DevContainer:**
+**Verify Your DevContainer**
 
 - Now, in VS Code, close the window and re-open the `examples/docker-compose-jupyter-redis` folder.
 - You should be prompted to **"Reopen in Container."** Select it.
