@@ -161,7 +161,7 @@ print(user1) # This calls the __str__ method
 !!! example "Dun Dun Dun"
     There are numerous powerful dunder methods that can super power your classes. [See here for other examples.](https://www.geeksforgeeks.org/python/dunder-magic-methods-python/). For example, `__add__` can be used to define how you add two custom objects together.
 
-### Inheritance
+### Inheritance (The "Is A" Relationship)
 
 **Inheritance** is a core concept that allows a class to inherit attributes and methods from another class. The inheriting class is called the **child** or **subclass**, and the class it inherits from is the **parent** or **superclass**. This is powerful for modeling relationships like "is a." A `Student` is a `User`, so the `Student` class can inherit from the `User` class.
 
@@ -196,6 +196,61 @@ student1.enroll()
 !!! tip "To `__init__` or not to `__init__`"
     When inheriting from a parent class which contains an `__init__` method, you don't have to supply an `__init__` in the child class. However, if you need to extend the initializer to include additional properties, you can use the `super().__init__(...)`.
 
+### **Composition (The "Has A" Relationship)**
+
+**Composition** is when a class contains an instance of another class as an attribute. It models a "has a" relationship, and it is often preferred over inheritance because it's more flexible.
+
+1.  Let's define a simple `Engine` class in `core/components.py`. This class has the behavior of starting and stopping.
+
+    ```python title="core/components.py" linenums="1"
+    class Engine:
+        def start(self):
+            return "Engine started."
+
+        def stop(self):
+            return "Engine stopped."
+
+    if __name__ == "__main__":
+        engine = Engine()
+        print("Start your engines!")
+        print(engine.start())
+    ```
+
+!!! question "What is `if __name__ == "__main__"`?"
+
+    This a convinent way to distinguish functionality between when you _import_ the module and when you _run_ it directly - and it is completely **optional**. It is incredibly useful for debugging purposes or documeting example usage. In other words, when you import from `core/components.py`, everything above the conditional is executed/defined, however the conditional itself only evaluates if you execute `core/components.py` directly. Now your file is accessible as both a stand-alone script as well as an importable module.
+
+2.  Now, in `transport/cars.py`, we'll create a `Car` class that **has an** `Engine`. We do this by creating an instance of the `Engine` class within the `Car`'s `__init__` method.
+
+    ```python title="transport/cars.py" linenums="1"
+    from my_project.core.components import Engine
+
+    class Car:
+        def __init__(self):
+            # Composition: A Car object "has an" Engine object
+            self.engine = Engine()
+
+        def start(self):
+            return self.engine.start()
+
+        def stop(self):
+            return self.engine.stop()
+
+    if __name__ == "__main__":
+        car = Car()
+        car.start()
+        car.stop()
+    ```
+
+### Inheritance vs. Composition
+
+| **Concept**     	| **Relationship** 	| **Analogy**         	| **When to Use**                                   	|
+|-----------------	|------------------	|---------------------	|---------------------------------------------------	|
+| **Inheritance** 	| "is a"           	| A Car is a Vehicle. 	| When a class is a specialized version of another. 	|
+| **Composition** 	| "has a"          	| A Car has a Engine. 	| When a class is composed of other objects.        	|
+
+Using both of these correctly is key to building robust and scalable applications.
+
 ### Static and Class Methods
 
 These are methods that belong to the class rather than an individual object.
@@ -228,7 +283,7 @@ For homework, you'll be tasked with applying these new functional and OOP concep
 
 Recall, what you know about Git, Docker, and DevContainers to set yourself up for success. Set up a development environment which you can use for the rest of this advanced python section - and don't reinvent the wheel.
 
-### **Create a Class Hierarchy**
+### **Create a Class Hierarchy (Inheritance - "is a")**
 
 - Create a parent class named `Shape` with an `__init__` method that takes a `color` as an argument.
 - Create two child classes, `Circle` and `Square`, that **inherit** from `Shape`.
@@ -245,6 +300,30 @@ Recall, what you know about Git, Docker, and DevContainers to set yourself up fo
 - Implement a class method on the `Shape` class called `create_red_shape(cls)`. This method should return a new instance of the class (`cls`) with the color already set to `'red'`.
 - Change the `area` calculation to a private method, which is automatically called sets a `self.area` property upon initialization.
 - Implement `__add__` and `__sub__` methods, which defines you to add/subtract shapes together. As an example, make it so when you add two shapes, you return the sum of each area.
+
+### Modeling a System with Composition ("has a")
+
+This exercise focuses on the "has a" relationship, where one object contains other objects.
+
+- **Part A: Create Component Classes**
+    - Create a class named `Engine` with an `__init__` method that accepts `fuel_type` (e.g., 'gasoline', 'electric').
+    - The `Engine` class should have a method `start()` that prints a message indicating the engine is starting with its fuel type (e.g., `"Gasoline engine roaring to life!"`).
+    - Create a class named `Wheel` with an `__init__` method that accepts `diameter` (an integer).
+    - The `Wheel` class should have a method `rotate()` that prints a message like `"Wheel (20 inches) is rotating."`.
+
+- Part B: Build the Main Class using Composition
+    - Create a class named `Car` with an `__init__` method that takes `model` (string), `fuel_type` (string), and `wheel_size` (integer) as arguments.
+    - Inside the `Car`'s `__init__` method, instantiate one `Engine` object and four `Wheel` objects using the provided arguments.
+    - The `Car` object should not inherit from `Engine` or `Wheel`.
+
+- Part C: Delegate Behavior
+    - The Car class should have a method `drive()`. This method should:
+        - Call the `start()` method of its internal `Engine` object.
+        - Iterate over its list of `Wheel` objects and call the `rotate()` method on each one.
+        - Print a final message: `"The [model] is ready to go!"`
+
+**Goal**: This exercise demonstrates how the Car class composes its behavior by delegating tasks to its internal `Engine` and `Wheel` objects.
+
 
 ### **Decorators Challenge**
 
