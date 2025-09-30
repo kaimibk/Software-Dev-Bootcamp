@@ -311,12 +311,12 @@ This exercise focuses on the "has a" relationship, where one object contains oth
     - Create a class named `Wheel` with an `__init__` method that accepts `diameter` (an integer).
     - The `Wheel` class should have a method `rotate()` that prints a message like `"Wheel (20 inches) is rotating."`.
 
-- Part B: Build the Main Class using Composition
+- **Part B: Build the Main Class using Composition**
     - Create a class named `Car` with an `__init__` method that takes `model` (string), `fuel_type` (string), and `wheel_size` (integer) as arguments.
     - Inside the `Car`'s `__init__` method, instantiate one `Engine` object and four `Wheel` objects using the provided arguments.
     - The `Car` object should not inherit from `Engine` or `Wheel`.
 
-- Part C: Delegate Behavior
+- **Part C: Delegate Behavior**
     - The Car class should have a method `drive()`. This method should:
         - Call the `start()` method of its internal `Engine` object.
         - Iterate over its list of `Wheel` objects and call the `rotate()` method on each one.
