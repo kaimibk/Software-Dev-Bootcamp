@@ -26,8 +26,12 @@ Instead, let's create a well-organized **package** for our project.
 
 1. We'll start by creating a project directory with the following structure. The `__init__.py` files are what make Python recognize these folders as a package.
 
-    !!! danger inline end "`ModuleNotFoundError`...Where am I?"
-        Note, a common annoyance of Python modules is making sure that Python/scripts know where to find your custom module(s). There are many ways to solve this issue, however since we are working in _containers_, in our build/compose we can set the `PYTHONPATH` environment variable to point to our module. For example `PYTHONPATH="${PYTHONPATH}:/path/to/my_project/"`
+    !!! note "init.py: The Gatekeeper"
+        An __init__.py file serves two main purposes:
+        
+        1. It tells Python that the directory should be treated as a package. Without this file, a directory with Python scripts is just a regular folder and can't be imported from.
+        
+        2. It can contain initialization code for the package. For example, you can use it to automatically import certain modules or define a public API for the package, so users can `import my_project.transport.Car` instead of the full path like `my_project.transport.cars.Car`.
     
     ```
     my_project/
@@ -40,6 +44,9 @@ Instead, let's create a well-organized **package** for our project.
     │   └── cars.py        # For our Car class
     └── main.py
     ```
+
+    !!! danger "`ModuleNotFoundError`...Where am I?"
+        Note, a common annoyance of Python modules is making sure that Python/scripts know where to find your custom module(s). There are many ways to solve this issue, however since we are working in _containers_, in our build/compose we can set the `PYTHONPATH` environment variable to point to our module. For example `PYTHONPATH="${PYTHONPATH}:/path/to/my_project/"`
 
 2. Next, we'll write our `Engine` class in `core/components.py` and our `Car` class in `transport/cars.py`.
 
@@ -58,55 +65,9 @@ This structure makes our code more readable, reusable, and easy to navigate.
 
 -----
 
-## Deepening Your OOP: Composition and Encapsulation
+## Deepening Your OOP
 
-We've already learned about inheritance, but two other powerful OOP concepts are crucial for building maintainable codebases.
-
-### **Composition (The "Has A" Relationship)**
-
-**Composition** is when a class contains an instance of another class as an attribute. It models a "has a" relationship, and it is often preferred over inheritance because it's more flexible.
-
-1.  Let's define a simple `Engine` class in `core/components.py`. This class has the behavior of starting and stopping.
-
-    ```python title="core/components.py" linenums="1"
-    class Engine:
-        def start(self):
-            return "Engine started."
-
-        def stop(self):
-            return "Engine stopped."
-
-    if __name__ == "__main__":
-        engine = Engine()
-        print("Start your engines!")
-        print(engine.start())
-    ```
-
-!!! question "What is `if __name__ == "__main__"`?"
-
-    This a convinent way to distinguish functionality between when you _import_ the module and when you _run_ it directly - and it is completely **optional**. It is incredibly useful for debugging purposes or documeting example usage. In other words, when you import from `core/components.py`, everything above the conditional is executed/defined, however the conditional itself only evaluates if you execute `core/components.py` directly. Now your file is accessible as both a stand-alone script as well as an importable module.
-
-2.  Now, in `transport/cars.py`, we'll create a `Car` class that **has an** `Engine`. We do this by creating an instance of the `Engine` class within the `Car`'s `__init__` method.
-
-    ```python title="transport/cars.py" linenums="1"
-    from my_project.core.components import Engine
-
-    class Car:
-        def __init__(self):
-            # Composition: A Car object "has an" Engine object
-            self.engine = Engine()
-
-        def start(self):
-            return self.engine.start()
-
-        def stop(self):
-            return self.engine.stop()
-
-    if __name__ == "__main__":
-        car = Car()
-        car.start()
-        car.stop()
-    ```
+We've already learned about inheritance and composition, but there are other powerful OOP concepts which are crucial for building maintainable codebases.
 
 ### **Encapsulation (Hiding Complexity)**
 
@@ -133,6 +94,70 @@ We've already learned about inheritance, but two other powerful OOP concepts are
     ```
 
 This ensures the `__rpm` attribute can only be modified through the `set_rpm` method, allowing us to enforce business logic (e.g., `rpm` can't be negative).
+
+### Abstraction
+
+Abstraction is about simplifying complex reality by modeling classes based on the essential properties and behaviors of an object. You hide the internal details and only show what's necessary to the user. A great analogy is driving a car. You know how to start it and press the gas pedal, but you don't need to understand the internal combustion engine's intricate mechanics. The car's controls are the abstraction.
+
+In Python, you can achieve abstraction through **abstract base classes (ABCs)** using the `abc` module. An ABC can't be instantiated; it's meant to be inherited by other classes. It can also define **abstract methods**, which a subclass must implement. If a concrete subclass doesn't implement all the abstract methods, you'll get a `TypeError`.
+
+```python linenums="1"
+from abc import ABC, abstractmethod
+
+# ABC cannot be instantiated
+class Vehicle(ABC):
+    @abstractmethod
+    def start_engine(self):
+        pass
+
+    def drive(self):
+        print("Driving...")
+
+class Car(Vehicle):
+    def start_engine(self):
+        print("Car engine started.")
+
+# This will raise a TypeError because `Motorcycle` doesn't implement `start_engine`
+# class Motorcycle(Vehicle):
+#     pass
+
+car = Car()
+car.start_engine()
+car.drive()
+```
+
+### Polymorphism
+
+Polymorphism, which means "many forms," is the ability of an object to take on many forms. In OOP, it refers to the ability of different classes to respond to the same method call in their own way. This allows you to write more flexible and reusable code.
+
+The most common form of polymorphism in Python is **duck typing**. The saying goes, "If it looks like a duck, swims like a duck, and quacks like a duck, then it's a duck." In programming, this means if an object has the methods and properties you need, you can use it, regardless of its class. The two main ways to achieve polymorphism are method overriding and method overloading.
+
+  * **Method Overriding:** A subclass provides a specific implementation of a method that is already defined in its parent class. This is what you already did with the `__init__` method in your `Student` class example.
+  * **Method Overloading:** This involves defining multiple methods with the same name but with different parameters. Python doesn't support traditional method overloading like Java or C++. Instead, you can achieve similar functionality using optional arguments, default values, or variable-length arguments.
+
+<!-- end list -->
+
+```python title="Polymorphism with Method Overriding" linenums="1"
+class Dog:
+    def speak(self):
+        return "Woof!"
+
+class Cat:
+    def speak(self):
+        return "Meow!"
+
+class Duck:
+    def speak(self):
+        return "Quack!"
+
+def animal_sound(animal):
+    print(animal.speak())
+
+animal_sound(Dog())
+animal_sound(Cat())
+animal_sound(Duck())
+
+```
 
 -----
 
@@ -256,20 +281,106 @@ This design allows us to easily switch between sending console warnings and emai
 
 -----
 
-## Recommended Exercises & Homework
+## Updated Exercises & Homework
 
-Your homework is to apply these code organization and design principles to build a single, cohesive application.
+Your homework is to apply these code organization and design principles to build a single, cohesive application. Follow these steps in the order they are presented.
 
-1.  **Project Setup & Factory:** Create a new project folder and set up a package structure with at least two sub-packages, like `vehicles` and `notifications`. In the `vehicles` package, create a `VehicleFactory` class that can produce different types of vehicles (e.g., a `Car` and a `Motorcycle`).
+1.  **Project Setup:**
 
-2.  **Vehicle Hierarchy:** Create a `Vehicle` parent class and have `Car` and `Motorcycle` inherit from it. The `Vehicle` class should have a private attribute for fuel level and a `refuel()` method.
+      * Create a new project folder called `my_project`.
+      * Inside it, set up the following package structure. Make sure to add `__init__.py` files to each folder to define them as Python packages.
 
-3.  **Strategy Pattern:** Implement the Strategy Pattern. Create a base `FuelWarningStrategy` class and two or more concrete strategies, such as `ConsoleWarningStrategy` and `EmailWarningStrategy`.
+    <!-- end list -->
 
-4.  **Putting It All Together:** Add a `check_fuel()` method to the `Vehicle` class. This method should take a `FuelWarningStrategy` as an argument. If the fuel is low, it should call the strategy's method to send a warning. In a final script, use your `VehicleFactory` to create a new vehicle and then call `check_fuel()` with different strategies to show the different warning messages.
+    ```
+    my_project/
+    ├── transport/
+    │   └── vehicles/
+    └── notifications/
+    ```
+
+2.  **Abstraction with Abstract Base Classes:**
+
+      * In the `transport` subpackage, create a file named `base.py`.
+      * Using the `abc` module, define an abstract base class called **`Vehicle`**.
+      * This class should have a private attribute `__fuel_level` initialized to `100` and a concrete method **`get_fuel_level()`** that returns the fuel level.
+      * Add an abstract method **`refuel()`** that takes `amount` as an argument. The `refuel` method should be responsible for updating the `__fuel_level`, but its specific implementation will be handled by subclasses.
+      * This step establishes the core contract that all vehicles must follow.
+
+3.  **Polymorphism with Method Overriding:**
+
+      * Inside `transport/vehicles/`, create two files: `cars.py` and `motorcycles.py`.
+      * In `cars.py`, create a class **`Car`** that inherits from the abstract **`Vehicle`** class (from `transport.base`).
+      * In `motorcycles.py`, create a class **`Motorcycle`** that also inherits from `Vehicle`.
+      * Each of these concrete classes must provide its own implementation of the abstract **`refuel()`** method, which they inherited. For example, the `Car.refuel()` method could print "Car is refueling..." and update the fuel level, while the `Motorcycle.refuel()` method prints "Motorcycle is refueling...".
+      * This demonstrates **polymorphism** by showing different objects responding to the same method call (`refuel()`) in their own unique way.
+
+4.  **Implementing the Strategy Pattern:**
+
+      * Inside the `notifications` package, create a file named `base.py`.
+      * In this file, define an abstract base class **`FuelWarningStrategy`** with an abstract method **`send_warning(message)`**.
+      * Next, create a file `console_strategy.py` in the same `notifications` package. In this file, create a concrete class **`ConsoleWarningStrategy`** that inherits from `FuelWarningStrategy` and implements the `send_warning()` method by printing the message to the console.
+      * Create another file `email_strategy.py` and implement a concrete class **`EmailWarningStrategy`** that prints a simulated email message.
+      * This prepares the different "strategies" that our vehicle objects will use.
+
+5.  **Putting It All Together with Composition:**
+
+      * Update your **`Vehicle`** abstract class in `transport/base.py`.
+      * Add a concrete method called **`check_fuel()`** to this class. This method should accept a `FuelWarningStrategy` object as an argument.
+      * Inside `check_fuel()`, add logic to check if the vehicle's fuel level is below a certain threshold (e.g., less than 50).
+      * If the fuel is low, call the `send_warning()` method on the provided strategy object with a message. This demonstrates **composition**—a `Vehicle` object "has a" `FuelWarningStrategy` object.
+
+6.  **Creating the Vehicle Factory:**
+
+      * Inside `transport/vehicles/`, create a file `vehicle_factory.py`.
+      * Create a **`VehicleFactory`** class that has a single method, `create_vehicle(vehicle_type)`.
+      * This method should return a new instance of a `Car` or `Motorcycle` based on the `vehicle_type` string.
+
+7.  **Final Execution:**
+
+      * In the root `my_project` directory, create a `main.py` file.
+      * Import your `VehicleFactory`, your concrete vehicle classes, and your warning strategies.
+      * Use the `VehicleFactory` to create a `Car` and a `Motorcycle`.
+      * Call the `refuel()` method on one of the vehicles to demonstrate the polymorphic behavior.
+      * Next, call the `check_fuel()` method on both vehicles, but pass a different strategy object to each one (e.g., `Car.check_fuel(ConsoleWarningStrategy())` and `Motorcycle.check_fuel(EmailWarningStrategy())`). This will show how your design allows for flexible and interchangeable behavior.
+
+!!! example "Final Directory Structure"
+
+    Here is the final, complete directory structure for your project. This layout is what you will have created after completing all the exercises. The use of `__init__.py` files is crucial as they tell Python that these directories are packages and can be imported from.
+
+    ```
+    my_project/
+    ├── main.py
+    ├── __init__.py
+    ├── transport/
+    │   ├── __init__.py
+    │   ├── base.py
+    │   └── vehicles/
+    │       ├── __init__.py
+    │       ├── cars.py
+    │       ├── motorcycles.py
+    │       └── vehicle_factory.py
+    └── notifications/
+        ├── __init__.py
+        ├── base.py
+        ├── console_strategy.py
+        └── email_strategy.py
+    ```
+
+    This structure effectively separates the different components of your application:
+
+    * **`main.py`**: The entry point of your program.
+    * **`transport/`**: Holds all classes related to vehicles.
+    * **`transport/base.py`**: Contains the abstract **`Vehicle`** class, which acts as the blueprint for all vehicles.
+    * **`transport/vehicles/`**: Contains the concrete vehicle implementations (**`Car`** and **`Motorcycle`**) and the **`VehicleFactory`**.
+    * **`notifications/`**: Contains all the different warning strategies.
+    * **`notifications/base.py`**: Holds the abstract **`FuelWarningStrategy`** class.
+    * **`notifications/console_strategy.py`** and **`email_strategy.py`**: The concrete implementations of the warning strategies.
 
 ## Suggested Readings & Resources
 
   - [Real Python: Python Packages](https://realpython.com/python-packages/)
   - [Refactoring Guru: Design Patterns](https://refactoring.guru/design-patterns/python) - A fantastic resource for learning about design patterns.
   - [Python.org: Modules](https://docs.python.org/3/tutorial/modules.html)
+  - [Python ABCs](https://docs.python.org/3/library/abc.html)
+  - [More on Duck Typing](https://realpython.com/duck-typing-python/)
