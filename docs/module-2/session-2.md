@@ -26,8 +26,8 @@ Instead, let's create a well-organized **package** for our project.
 
 1. We'll start by creating a project directory with the following structure. The `__init__.py` files are what make Python recognize these folders as a package.
 
-    !!! note "init.py: The Gatekeeper"
-        An __init__.py file serves two main purposes:
+    !!! note "`__init__.py`: The Gatekeeper"
+        An `__init__.py` file serves two main purposes:
         
         1. It tells Python that the directory should be treated as a package. Without this file, a directory with Python scripts is just a regular folder and can't be imported from.
         
