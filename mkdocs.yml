@@ -79,6 +79,8 @@ nav:
     - module-2/index.md
     - Advanced Functions and Object Oriented Programming: module-2/session-1.md
     - Organizing and Designing Code: module-2/session-2.md
+    - Writing Robust, Maintainable Code: module-2/session-3.md
+    - Testing and Debugging: module-2/session-4.md
   - Module 3:
     - module-3/index.md
 
