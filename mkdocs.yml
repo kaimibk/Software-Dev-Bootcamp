@@ -81,7 +81,7 @@ nav:
     - Organizing and Designing Code: module-2/session-2.md
     - Writing Robust, Maintainable Code: module-2/session-3.md
     - Testing and Debugging: module-2/session-4.md
-  - Module 3:
+  - "Module 3: Large Language Models & Generative AI":
     - module-3/index.md
 
 extra:

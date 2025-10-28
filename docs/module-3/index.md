@@ -1,19 +1,15 @@
-# Module 3: Data Engineering & Distributed Systems
+# Module 3: Large Language Models & AI Tools
 
-## Data Engineering Fundamentals 📊
+This module provides a practical guide to Large Language Model (LLM) technologies and how to use them effectively.
 
-Session 1: This session introduces core data engineering concepts. We'll discuss the differences between ETL (Extract, Transform, Load) and ELT (Extract, Load, Transform) and explore their modern applications in data pipelines.
+[Session 1: LLM Fundamentals & Direct API Interaction](./session-1.md)
+This session lays the conceptual and technical groundwork for working with Large Language Models. We will cover the basic mechanics of LLMs (tokens, context windows), introduce essential prompt engineering techniques like **Zero-shot** and **Few-shot** prompting, and explain the core API parameters that control the model's output, such as **temperature** and **top-k**. The primary goal is to bypass frameworks initially and provide students with hands-on experience by executing direct, low-level **API calls** to the Gemini endpoint in Python, understanding exactly what is happening under the hood before adding complexity.
 
-Session 2: We'll introduce the Data Medallion Architecture , a foundational pattern for building reliable data lakes. We'll explain the purpose of each layer (Bronze, Silver, Gold) and discuss how data flows through them.
+[Session 2: Grounding, Structured Output, and RAG Concept](./session-2.md)
+This class addresses the limitations of bare LLMs, focusing on how to make their output reliable and predictable. We'll first tackle the problem of **hallucination** by demonstrating the use of the **Google Search tool** to ground responses in real-time information, observing the citation metadata. Crucially, we will leverage the students' advanced Python knowledge by showing them how to use **Pydantic models** to define JSON schemas, forcing the model to return structured, strongly-typed data. The session will conclude with a conceptual introduction to **Retrieval-Augmented Generation (RAG)** as the principle of grounding the model in private data.
 
-## Databricks & PySpark 📈
+[Session 3: Frameworks and Retrieval Systems (LangChain & LlamaIndex)](./session-3.md)
+Moving from direct API calls, this session justifies and introduces high-level orchestration frameworks, specifically **LangChain**, for building scalable LLM applications. We will explore the framework's components (Prompts, Models, Parsers) and focus on implementing the **Retrieval-Augmented Generation (RAG)** pipeline. Students will learn the RAG components in depth: how to load external **documents**, use **Text Splitters** to break them into manageable chunks, and use **Vector Stores** and **Retrievers** to fetch the most relevant context, demonstrating how to build a basic question-answering system over a private dataset.
 
-Session 3: We'll introduce Databricks as a platform for large-scale data processing. We'll explore the basics of Apache Spark and how it distributes data processing across a cluster.
-
-Session 4: This is a hands-on session with PySpark. Students will learn to work with Spark DataFrames and perform common data manipulation operations like filter, select, and groupby in a distributed environment.
-
-## Spark SQL and Data Pipelines
-
-Session 5: SQL basics. Students will write queries in Databricks to join tables, perform aggregations, and transform data.
-
-Session 6: Building a simple data pipeline. Students will apply their knowledge to move and transform data between the medallion layers within Databricks using either PySpark or Spark SQL.
+[Session 4: Agentic Workflows and the ReACT Pattern](./session-4.md)
+The final session focuses on building a more sophisticated type of LLM application: an intelligent **agent**. We will distinguish between simple, fixed chains and dynamic agents that use the LLM as a **reasoning engine** to determine the next action. The core concept taught is the **ReACT** (Reasoning and Acting) pattern, where the agent decides whether to use a **Tool** (an external resource, like a calculator or a code function) or use the general LLM to answer. The ultimate goal is for students to learn how to define custom **Python functions** and wrap them as tools for the agent, enabling it to perform complex, multi-step tasks.

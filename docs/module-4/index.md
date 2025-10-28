@@ -1,14 +1,19 @@
-# Module 3: Architecture Design
+# Module 4: Data Engineering & Distributed Systems
 
-## Introduction to APIs
+## Data Engineering Fundamentals 📊
 
-Session 1: Concepts of APIs (REST, GraphQL, gRPC, etc.)
+Session 1: This session introduces core data engineering concepts. We'll discuss the differences between ETL (Extract, Transform, Load) and ELT (Extract, Load, Transform) and explore their modern applications in data pipelines.
 
-Session 2: We'll introduce the FastAPI framework, a modern web framework for building APIs. Building on our advanced Python skills, we'll design and create our first API endpoints.
+Session 2: We'll introduce the Data Medallion Architecture , a foundational pattern for building reliable data lakes. We'll explain the purpose of each layer (Bronze, Silver, Gold) and discuss how data flows through them.
 
+## Databricks & PySpark 📈
 
-## Architecture Design Patterns
+Session 3: We'll introduce Databricks as a platform for large-scale data processing. We'll explore the basics of Apache Spark and how it distributes data processing across a cluster.
 
-Session 3: We'll explore different system architectures, comparing the benefits and drawbacks of monolithic vs. microservice designs.
+Session 4: This is a hands-on session with PySpark. Students will learn to work with Spark DataFrames and perform common data manipulation operations like filter, select, and groupby in a distributed environment.
 
-Session 4: This session covers the principles of event-driven vs. message-driven architectures. We'll discuss how asynchronous communication through message queues can help build scalable and decoupled systems.
+## Spark SQL and Data Pipelines
+
+Session 5: SQL basics. Students will write queries in Databricks to join tables, perform aggregations, and transform data.
+
+Session 6: Building a simple data pipeline. Students will apply their knowledge to move and transform data between the medallion layers within Databricks using either PySpark or Spark SQL.
