@@ -83,6 +83,10 @@ nav:
     - Testing and Debugging: module-2/session-4.md
   - "Module 3: Large Language Models & Generative AI":
     - module-3/index.md
+    - LLM Fundamentals & Direct API Interaction: module-3/session-1.md
+    - Grounding, Structured Output, and RAG Concept: module-3/session-2.md
+    - Frameworks and Retrieval Systems (LangChain & LlamaIndex): module-3/session-3.md
+    - Agentic Workflows and the ReACT Pattern: module-3/session-4.md
 
 extra:
   social:
