@@ -1,4 +1,4 @@
-#LLM Fundamentals & Direct API Interaction
+# LLM Fundamentals & Direct API Interaction
 
 This session is designed to give you a robust, practical understanding of Large Language Models and, most importantly, to execute your first direct API calls to them. By the end of this class, you'll know the core components of an LLM system and the structure of the request you send and the response you receive.
 
@@ -201,7 +201,7 @@ For this week's homework, you will provision your own API key and use basic Pyth
 
 1.  **OpenAI API Key Provisioning:**
 
-    * Sign up for an OpenAI account and generate a new **API Key**. **Treat this key like a password.**
+    * Sign up for an [OpenAI Platform](https://platform.openai.com/) account and generate a new **API Key**. **Treat this key like a password.**
 
     !!! Danger "Keep it Secret, Keep it Safe"
         Treat your API key like a password. DO **NOT** share it with others you don't trust or commit to GitHub. If you wish to commit your code to Git, one method to keep your key safe by storing it within an untracked environment variable (i.e. `.env` file) which gets loaded into the script.
@@ -267,6 +267,14 @@ For this week's homework, you will provision your own API key and use basic Pyth
 
       * **Experiment 3 (Constraint Test):** Restore the original professional `system` message and set `temperature` to `0.1`. Change the `user` message to: **"Explain why the API key is important, but keep the explanation under 20 words."** Observe whether the model adheres to the word count constraint.
 
-      * **Experiment 4 (OpenAI):** Try to use the official OpenAI python library to conduct these experiments.
+      * **Experiment 4 (OpenAI):** Try to use the official [OpenAI python library](https://platform.openai.com/docs/libraries?language=python) to conduct these experiments.
 
 By the end of this exercise, you'll have a clear, practical understanding of how every parameter in the API payload controls the LLM's final output.
+
+## Suggested Readings & Resources
+
+- [Brief Intro to LLMs](https://www.youtube.com/watch?v=LPZh9BOjkQs)
+- [History of Large Language Models](https://www.youtube.com/watch?v=OFS90-FX6pg)
+- [Transformers, the tech behind LLMs](https://www.youtube.com/watch?v=wjZofJX0v4M)
+- [Prompt Engineering Tips and References](https://www.promptingguide.ai/)
+- [OpenAI API](https://platform.openai.com/docs/api-reference/responses/create)
