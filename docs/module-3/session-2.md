@@ -25,8 +25,6 @@ Try asking your LLM the query below. It should not be able to answer correctly u
 | :--- | :--- | :--- |
 | **CONTEXT:** `The new protocol for user authentication, known as "Project Cerberus," was implemented on October 15th, 2024. This date supersedes all previous documentation.` | **Query:** `When was Project Cerberus implemented, and why is this date important?` | The model bases its answer *only* on the supplied October 15th date, ignoring its general training data. |
 
------
-
 ## Conceptual RAG: Scalable Grounding
 
 While manual context injection works, it doesn't scale. If you have millions of documents, you can't manually find the one sentence the model needs.
@@ -64,8 +62,6 @@ The most important step is the **Retriever**, which decides which external data 
 
   * **Keyword Search:** Finds documents that contain the exact words used in the query. *Weakness: Fails if the user uses synonyms.*
   * **Vector Search:** The modern, powerful approach. It uses **embeddings** to find data that is **semantically similar** (meaning similar) to the query, even if the exact words are different. This is how RAG achieves high accuracy.
-
------
 
 ## Structured Output: Enforcing Predictability
 
@@ -106,8 +102,6 @@ class CustomerRecord(BaseModel):
     name: str = Field(description="The customer's full name.")
     is_active: bool = Field(description="True if the account is currently active.")
 ```
-
------
 
 ## Recommended Exercises & Homework
 
