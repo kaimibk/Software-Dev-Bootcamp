@@ -33,7 +33,6 @@ We are focusing on **LlamaIndex** today because it offers the strong out-of-the-
 !!! Note "If No Fit..."
     As you get more advanced, you soon realize that some of these frameworks are too bloated or don't support your niche processes. Thus, it is common to build these systems from scratch. However, I highly suggest starting with a framework until you know what you are doing (or know exactly what you need to build).
 
------
 
 ## LlamaIndex Core Concepts
 
@@ -48,7 +47,7 @@ To use LlamaIndex, you need to understand its primary objects:
 <!-- end list -->
 
 ```mermaid
-graph LR
+graph TB
     A[Raw Documents] -->|Load| B(Documents);
     B -->|Parse/Chunk| C[Nodes];
     C -->|Embed| D[Vector Index];
@@ -57,8 +56,6 @@ graph LR
     F -->|Augment| G[LLM Prompt];
     G --> H[Final Answer];
 ```
-
------
 
 ## The "Hello World" of RAG
 
@@ -99,7 +96,6 @@ print(response)
     3\. Stored them in an in-memory vector database.
     4\. On query, searched for the top-k most similar chunks and sent them to GPT-4.
 
------
 
 ## Optimization Strategies: Improving RAG Performance
 
@@ -127,6 +123,34 @@ graph TD
     I[Structured Output]
     end
     A --> B --> D --> F --> H
+```
+
+Updated RAG diagram:
+
+```mermaid
+graph TB
+    subgraph "1. Data Prep & Ingestion"
+    A[Raw Documents] -->|Load| B(Documents)
+    B -->|Parse/Chunk| C[Nodes]
+    end
+
+    subgraph "2. Indexing"
+    C -->|Embed| D[Vector Index]
+    end
+
+    subgraph "3. Retrieval"
+    E[User Query] -->|Search| D
+    D -->|Retrieve| F[Top-k Candidates]
+    end
+
+    subgraph "4. Post-Retrieval (Optimization)"
+    F -->|Re-Rank/Filter| F2[Final Context]
+    end
+
+    subgraph "5. Generation"
+    F2 -->|Augment| G[LLM Prompt]
+    G --> H[Final Answer]
+    end
 ```
 
 ### Data Creation & Preparation
@@ -163,7 +187,6 @@ This is often the highest-impact optimization. After fetching the top 10 chunks,
   * **Parameter Tuning:** Tweaking parameters like temperature, top-p, etc.
   * **LLM Selection:** Using a model with a larger context window or better reasoning capabilities.
 
------
 
 ## Recommended Exercises & Homework
 
