@@ -93,7 +93,7 @@ nav:
     - reinforcement-learning/index.md
     - Concepts & Mathematical Foundations: reinforcement-learning/1.md
     - Building a Custom Environment with Gymnasium: reinforcement-learning/2.md
-    - TBD: reinforcement-learning/3.md
+    - Training with PPO and Advanced Frontiers: reinforcement-learning/3.md
 
 extra:
   social:
