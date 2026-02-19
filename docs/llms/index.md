@@ -2,13 +2,13 @@
 
 This module provides a practical guide to Large Language Model (LLM) technologies and how to use them effectively.
 
-[Session 1: LLM Fundamentals & Direct API Interaction](./session-1.md)
+[Session 1: LLM Fundamentals & Direct API Interaction](./1.md)
 This session lays the conceptual and technical groundwork for working with Large Language Models. We will cover the basic mechanics of LLMs (tokens, context windows), introduce essential prompt engineering techniques like **Zero-shot** and **Few-shot** prompting, and explain the core API parameters that control the model's output, such as **temperature** and **top-k**. The primary goal is to bypass frameworks initially and provide students with hands-on experience by executing direct, low-level **API calls** to the Gemini endpoint in Python, understanding exactly what is happening under the hood before adding complexity.
 
-[Session 2: Grounding, Structured Output, and RAG Concept](./session-2.md)
+[Session 2: Grounding, Structured Output, and RAG Concept](./2.md)
 This class addresses the limitations of bare LLMs, focusing on how to make their output reliable and predictable. We'll first tackle the problem of **hallucination** by demonstrating the use of the **Google Search tool** to ground responses in real-time information, observing the citation metadata. Crucially, we will leverage the students' advanced Python knowledge by showing them how to use **Pydantic models** to define JSON schemas, forcing the model to return structured, strongly-typed data. The session will conclude with a conceptual introduction to **Retrieval-Augmented Generation (RAG)** as the principle of grounding the model in private data.
 
-[Session 3: Frameworks and Retrieval Systems (LangChain & LlamaIndex)](./session-3.md)
+[Session 3: Frameworks and Retrieval Systems (LangChain & LlamaIndex)](./3.md)
 Moving from direct API calls, this session justifies and introduces high-level orchestration frameworks, specifically **LangChain**, for building scalable LLM applications. We will explore the framework's components (Prompts, Models, Parsers) and focus on implementing the **Retrieval-Augmented Generation (RAG)** pipeline. Students will learn the RAG components in depth: how to load external **documents**, use **Text Splitters** to break them into manageable chunks, and use **Vector Stores** and **Retrievers** to fetch the most relevant context, demonstrating how to build a basic question-answering system over a private dataset.
 
 [Session 4: Agentic Workflows and the ReACT Pattern](./session-4.md)

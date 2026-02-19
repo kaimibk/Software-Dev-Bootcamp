@@ -4,19 +4,19 @@ This module is designed to get students set up with the essential tools for coll
 
 ## Git, GitHub, and Visual Studio Code
 
-[Session 1: Git & GitHub Essentials 💻](./session-1.md)
+[Session 1: Git & GitHub Essentials 💻](./1.md)
 This session covers the fundamentals of version control. Students will learn core Git commands like init, add, commit, and status. We'll also cover the collaborative aspects of GitHub, including push, pull, and the concept of a pull request.
 
-[Session 2: Visual Studio Code Mastery ✍️](./session-2.md)
+[Session 2: Visual Studio Code Mastery ✍️](./2.md)
 Students will be introduced to Visual Studio Code (VS Code), our primary development environment for the bootcamp. We'll explore its user interface, essential shortcuts, and key extensions. The goal is for students to become comfortable and efficient with the editor.
 
 ## Docker, Docker Compose, and DevContainers
 
-[Session 3: Docker Fundamentals 🐳](./session-3.md)
+[Session 3: Docker Fundamentals 🐳](./3.md)
 This session introduces Docker, explaining the difference between containers and virtual machines. Students will write their first Dockerfile to containerize a simple Python application.
 
-[Session 4: Container Orchestration ⚙️](./session-4.md)
+[Session 4: Container Orchestration ⚙️](./4.md)
 Building on the first session, we'll introduce Docker Compose to manage multi-service applications (e.g., a web app and a database). 
 
-[Session 5: Reproducible Environments](./session-5.md)
+[Session 5: Reproducible Environments](./5.md)
 The Docker lessons will culminate in setting up DevContainers for our course, ensuring every user can build identical, reproducible development environments from this point on.
