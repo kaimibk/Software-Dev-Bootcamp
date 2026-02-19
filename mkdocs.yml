@@ -68,25 +68,30 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - "Module 1: Foundational Tools & Environment":
-    - module-1/index.md
-    - Git & GitHub: module-1/session-1.md
-    - VS Code Basics: module-1/session-2.md
-    - Docker Fundamentals: module-1/session-3.md
-    - Docker Compose: module-1/session-4.md
-    - Dev Containers: module-1/session-5.md
-  - "Module 2: Advanced Python Programming":
-    - module-2/index.md
-    - Advanced Functions and Object Oriented Programming: module-2/session-1.md
-    - Organizing and Designing Code: module-2/session-2.md
-    - Writing Robust, Maintainable Code: module-2/session-3.md
-    - Testing and Debugging: module-2/session-4.md
-  - "Module 3: Large Language Models & Generative AI":
-    - module-3/index.md
-    - LLM Fundamentals & Direct API Interaction: module-3/session-1.md
-    - Grounding, Structured Output, and RAG Concept: module-3/session-2.md
-    - Frameworks and Retrieval Systems (LangChain & LlamaIndex): module-3/session-3.md
-    - Agentic Workflows and the ReACT Pattern: module-3/session-4.md
+  - "Foundational Tools & Environment":
+    - dev-env/index.md
+    - Git & GitHub: dev-env/1.md
+    - VS Code Basics: dev-env/2.md
+    - Docker Fundamentals: dev-env/3.md
+    - Docker Compose: dev-env/4.md
+    - Dev Containers: dev-env/5.md
+  - "Advanced Python Programming":
+    - advanced-python/index.md
+    - Advanced Functions and Object Oriented Programming: advanced-python/1.md
+    - Organizing and Designing Code: advanced-python/2.md
+    - Writing Robust, Maintainable Code: advanced-python/3.md
+    - Testing and Debugging: advanced-python/4.md
+  - "Large Language Models & Generative AI":
+    - llms/index.md
+    - LLM Fundamentals & Direct API Interaction: llms/1.md
+    - Grounding, Structured Output, and RAG Concept: llms/2.md
+    - Frameworks and Retrieval Systems (LangChain & LlamaIndex): llms/3.md
+    - Agentic Workflows and the ReACT Pattern: llms/4.md
+  - "Reinforcement Learning":
+    - reinforcement-learning/index.md
+    - Concepts & Mathematical Foundations: reinforcement-learning/1.md
+    - Building a Custom Environment with Gymnasium: reinforcement-learning/2.md
+    - TBD: reinforcement-learning/3.md
 
 extra:
   social:

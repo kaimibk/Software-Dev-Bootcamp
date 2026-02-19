@@ -1,4 +1,4 @@
-# Module 1: Foundational Tools & Environment
+# Foundational Tools & Environment
 
 This module is designed to get students set up with the essential tools for collaborative and reproducible software development. They will master Git and GitHub, learn to use Visual Studio Code, and then dive into the world of containers with Docker, Docker Compose, and DevContainers.
 

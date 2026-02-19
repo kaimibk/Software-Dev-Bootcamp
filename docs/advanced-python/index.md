@@ -1,4 +1,4 @@
-# Module 2: Advanced Python
+# Advanced Python
 
 This module focuses on writing clean, professional-grade Python code and introduces the fundamental concepts of data engineering.
 

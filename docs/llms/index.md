@@ -1,4 +1,4 @@
-# Module 3: Large Language Models & AI Tools
+# Large Language Models & AI Tools
 
 This module provides a practical guide to Large Language Model (LLM) technologies and how to use them effectively.
 
