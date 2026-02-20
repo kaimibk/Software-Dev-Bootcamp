@@ -1,5 +1,7 @@
 # RL Crash Course: From Bellman to Bots
 
+If you would like to follow along with the code, you can find the supplementaly code for this module in the [reinforcement-learning GitHub repository](https://github.com/kaimibk/reinforcement-learning-tutorial) including instructions for setting up the environment and running the code.
+
 ## Part 1: Concepts & Mathematical Foundations
 In this section, we will establish the intuition behind Reinforcement Learning (RL), understand when to use it (and when not to), and derive the mathematical equations that power modern agents.
 
