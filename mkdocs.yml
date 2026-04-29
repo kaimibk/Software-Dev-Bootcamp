@@ -89,8 +89,9 @@ nav:
     - LLM Fundamentals & Direct API Interaction: llms/1.md
     - Grounding, Structured Output, and RAG Concept: llms/2.md
     - Frameworks and Retrieval Systems (LangChain & LlamaIndex): llms/3.md
+    - Agentic Workflows and the ReACT Pattern: llms/4.md
     - Self-Hosting & Deploying Open Source LLMs: llms/self-hosting.md
-    # - Agentic Workflows and the ReACT Pattern: llms/4.md
+    - Modern Agent Protocols: llms/agent-protocols.md
   - "Reinforcement Learning":
     - reinforcement-learning/index.md
     - Concepts & Mathematical Foundations: reinforcement-learning/1.md
