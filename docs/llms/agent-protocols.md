@@ -101,18 +101,6 @@ To build a modern application, you need to master how agents talk to tools, to u
 
 ---
 
-### AG-UI (Agent-User Interaction)
-**Agent ↔ Application Frontend**
-
-* **What it is:** An event-based protocol (popularized by frameworks like CopilotKit) that robustly connects an agentic backend to a user-facing application (React, iOS, etc.). 
-* **Why it matters:** Chatbots are easy; integrated copilots are hard. AG-UI handles the incredibly complex bi-directional syncing required for modern apps.  Agents stream text incrementally and pause to wait for human-in-the-loop approvals. AG-UI eliminates the boilerplate needed to parse these streams by translating raw framework events into a standard SSE (Server-Sent Events) stream using typed events like `TOOL_CALL_START` and `TEXT_MESSAGE_CONTENT`.
-* **Key Features:** It manages the state of the chat history, broadcasts tool-execution states to the user (e.g., showing a spinner that says *"Searching database..."*), and handles **Human-in-the-Loop** approvals (e.g., pausing the agent until the user clicks "Approve" before sending an email).
-
-!!! info "Recommended Reading"
-    Review the [CopilotKit Documentation](https://docs.copilotkit.ai/) to see how AG-UI patterns are implemented to deeply embed agents into React application states, allowing the AI to actually "see" what the user is doing on the screen.
-
----
-
 ### A2UI (Agent to UI)
 **Agent ↔ Generative Interface**
 
@@ -138,6 +126,23 @@ sequenceDiagram
 !!! tip "Generative UI in Practice"
     The [Vercel AI SDK (`ai/rsc`)]([https://sdk.vercel.ai/docs](https://sdk.vercel.ai/docs)) is one of the leading implementations of A2UI concepts, allowing you to stream React components directly from your LLM backend to the user.
 
-**Adopting the Stack Incrementally**
+---
+
+### AG-UI (Agent-User Interaction)
+**Agent ↔ Application Frontend**
+
+* **What it is:** An event-based protocol (popularized by frameworks like CopilotKit) that robustly connects an agentic backend to a user-facing application (React, iOS, etc.). 
+* **Why it matters:** Chatbots are easy; integrated copilots are hard. AG-UI handles the incredibly complex bi-directional syncing required for modern apps.  Agents stream text incrementally and pause to wait for human-in-the-loop approvals. AG-UI eliminates the boilerplate needed to parse these streams by translating raw framework events into a standard SSE (Server-Sent Events) stream using typed events like `TOOL_CALL_START` and `TEXT_MESSAGE_CONTENT`.
+* **Key Features:** It manages the state of the chat history, broadcasts tool-execution states to the user (e.g., showing a spinner that says *"Searching database..."*), and handles **Human-in-the-Loop** approvals (e.g., pausing the agent until the user clicks "Approve" before sending an email).
+
+!!! info "Recommended Reading"
+    Review the [CopilotKit Documentation](https://docs.copilotkit.ai/) to see how AG-UI patterns are implemented to deeply embed agents into React application states, allowing the AI to actually "see" what the user is doing on the screen.
+
+!!! example "See it in action!"
+    I recommend seeing AG-UI and A2UI in action by trying out this demo [AG-UI Interactive Dojo](https://dojo.ag-ui.com/), which showcases how agents can generate dynamic UIs and interact with users in real-time.
+
+---
+
+### Wrap Up
 
 You do not need to implement all six protocols on day one. Most architectures start with **MCP** for robust data access and **A2A** to route logic to specialized sub-agents. As your system matures into executing real-world procurement or requiring rich real-time dashboards, you can strategically introduce **UCP**, **AP2**, **A2UI**, and **AG-UI**.
