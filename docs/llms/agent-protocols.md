@@ -89,7 +89,7 @@ To build a modern application, you need to master how agents talk to tools, to u
 
 ---
 
-### 4. AP2 (Agent Payments Protocol)
+### AP2 (Agent Payments Protocol)
 **Agent ↔ Secure Authorization**
 
 * **What it is:** An extension of UCP that enforces configurable guardrails on transactions and provides a full audit trail.
