@@ -8,7 +8,9 @@ In this module, we will demystify the hardware required to run Large Language Mo
 
 Before spinning up a model, you must ensure your hardware can physically hold it. LLMs are memory-bound, meaning **VRAM (Video RAM)** on your GPU is your most precious resource. 
 
-When you see a model like `Llama-3.1-8B`, the "8B" stands for 8 billion parameters. By default, these parameters are stored in 16-bit floating-point (FP16 or BF16) precision. 
+When you see a model like `Llama-3.1-8B`, the "8B" stands for 8 billion parameters. By default, these parameters are stored in 16-bit floating-point (FP16 or BF16) precision.
+
+![basic image of neural network](https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Colored_neural_network.svg/1280px-Colored_neural_network.svg.png)
 
 !!! tip "The Rule of Thumb" 
     1 Billion parameters $\approx$ 2 GB of VRAM at 16-bit precision.
