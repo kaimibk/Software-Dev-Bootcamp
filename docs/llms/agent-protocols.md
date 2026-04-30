@@ -57,6 +57,32 @@ To build a modern application, you need to master how agents talk to tools, to u
 !!! info "Recommended Reading"
     For a more detailed breakdown of the protocols, check out the [Agent Protocols Guide by Google](https://developers.googleblog.com/developers-guide-to-ai-agent-protocols/), which provides an excellent overview of the current landscape.
 
+```mermaid
+sequenceDiagram
+    participant User
+    participant OrchestratorAgent as Orchestrator Agent
+    participant InventoryAgent as Inventory Specialist Agent (A2A)
+    participant McpTool as PostgreSQL Inventory Tool (MCP)
+
+    User->>OrchestratorAgent: "Check stock for 'Milk'"
+    
+    Note over OrchestratorAgent: Under stands intent and delegates task (A2A)
+
+    OrchestratorAgent->>InventoryAgent: Delegate stock check: "Find stock for 'Milk'" (A2A Protocol)
+    
+    InventoryAgent->>McpTool: Execute tool: `check_stock(item='Milk')` (MCP Protocol)
+    
+    alt Tool call successful
+        McpTool-->>InventoryAgent: Return JSON: `{status: "in_stock", quantity: 15}` (MCP Protocol)
+        InventoryAgent-->>OrchestratorAgent: Task complete: "'Milk' is in stock." (A2A Protocol)
+        OrchestratorAgent-->>User: "We have 15 cartons of Milk available."
+    else Tool call fails
+        McpTool-->>InventoryAgent: Return Error: `ConnectionRefusedError` (MCP Protocol)
+        InventoryAgent-->>OrchestratorAgent: Task complete (Failed): "Inventory database down." (A2A Protocol)
+        OrchestratorAgent-->>User: "I'm sorry, I cannot check the Milk stock right now."
+    end
+```
+
 ---
 
 ### MCP (Model Context Protocol)

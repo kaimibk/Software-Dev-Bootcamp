@@ -89,9 +89,7 @@ flowchart TD
     
     B -->|Yes| C{Multi-node Cluster?}
     C -->|Yes| D[Ray Serve]
-    C -->|No| E{Native HuggingFace Stack?}
-    E -->|Yes| F[HuggingFace TGI]
-    E -->|No| G[vLLM]
+    C -->|No| E[vLLM]
     
     B -->|No, Local / Edge| H{Hardware Target?}
     H -->|Browser / Mobile| I[MLC LLM]
@@ -105,9 +103,9 @@ flowchart TD
 | Framework | Best For... | Core Technology / Advantage | Target Hardware | Setup Difficulty |
 | :--- | :--- | :--- | :--- | :--- |
 | **Ollama** | Developer UX & Local Prototyping | Wraps Llama.cpp in a Docker-like CLI. Incredibly easy to pull and run models. | Mac, Windows, Linux (Consumer) | 🟢 Very Easy |
+| **vLLM** | High-throughput Production APIs | **PagedAttention:** Manages KV Cache like virtual memory, resulting in massive throughput gains for concurrent users. | Consumer or datacenter GPUs (NVIDIA/AMD) | 🟢 Easy |
+| **HuggingFace TGI** | HF Integration | Text Generation Inference. Native support for the newest models on HuggingFace on day one. | Consumer or datacenter GPUs | 🟢 Easy |
 | **Llama.cpp** | Bare-metal execution & CPU fallback | Written in pure C/C++. Unmatched optimization for Apple Silicon (Metal) and CPU inference. | Edge devices, Mac, Raspberry Pi | 🟡 Medium |
-| **vLLM** | High-throughput Production APIs | **PagedAttention:** Manages KV Cache like virtual memory, resulting in massive throughput gains for concurrent users. | Datacenter GPUs (NVIDIA/AMD) | 🟡 Medium |
-| **HuggingFace TGI** | Enterprise Serving & HF Integration | Text Generation Inference. Native support for the newest models on HuggingFace on day one. | Datacenter GPUs | 🟡 Medium |
 | **Ray Serve** | Complex, Multi-Node Pipelines | Distributed computing. Best for routing requests across multiple physical machines or combining LLMs with traditional ML. | Cloud Clusters (AWS/GCP) | 🔴 Hard |
 | **MLC LLM** | Universal Edge Deployment | Compiles models to run natively in WebGPU (Browsers), iOS, and Android devices. | Phones, Browsers, Edge | 🔴 Hard |
 
