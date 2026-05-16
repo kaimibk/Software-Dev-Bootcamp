@@ -176,7 +176,7 @@ Up until now, we've used **Example-Based Testing**. We hardcode exact inputs. Bu
 **Property-Based Testing** solves this. You define the *properties* (rules) that should always hold true, and the framework throws thousands of randomly generated edge cases at it.
 
 ```mermaid
-graph TD
+graph TB
     subgraph Example-Based Testing
     A[Developer writes inputs: 2 + 2] --> B[Test runs 1 time]
     B --> C[Assert result is 4]
@@ -278,14 +278,6 @@ def test_invalid_metrics_dataframe():
         performance_schema.validate(invalid_data)
 
 ```
-
----
-
-That is a smart adjustment. Jumping straight into network requests and HTTP status codes can derail the lesson if students get bogged down in API concepts rather than focusing on the actual testing mechanics.
-
-Replacing the API call with a notoriously slow local function (using `time.sleep()`) is the perfect way to demonstrate *why* we mock, without the overhead of web protocols. It also gives us a great opportunity to layer the exercise, starting with simple pure functions before moving to the mock.
-
-Here is the revised **Suggested Practice Exercises** section, with the new, scaffolded Exercise 1. You can swap this directly into the end of your lesson plan.
 
 ---
 
