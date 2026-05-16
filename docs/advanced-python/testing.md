@@ -31,6 +31,50 @@ graph TD
 
 ---
 
+## Project Structure: Organizing for Scale
+
+Before we write a single test, we need to know where they live. As your application grows, dumping all your tests into a single `test.py` file becomes completely unmanageable.
+
+The industry standard for Python projects is the **`src` layout**. This explicitly separates your application code from your testing code. It prevents import bleed, forces you to test your code exactly as a user would import it, and ensures you don't accidentally package your test suite into your final production build.
+
+Here is how a professional Python repository is structured:
+
+```text
+my_agent_project/
+├── pyproject.toml             # Project metadata and dependencies
+├── src/                       # ALL production code lives inside here
+│   └── my_app/                # Your main package
+│       ├── __init__.py
+│       ├── agents/            # Submodule for agents
+│       │   ├── __init__.py
+│       │   └── router.py      # E.g., The agent routing logic
+│       └── utils/             # Submodule for utilities
+│           ├── __init__.py
+│           └── text.py        # E.g., Text cleaning functions
+└── tests/                     # ALL testing code lives here
+    ├── __init__.py
+    ├── agents/                
+    │   └── test_router.py     # Tests for router.py
+    └── utils/
+        └── test_text.py       # Tests for text.py
+
+```
+
+### The Golden Rules of Test Organization
+
+1. **Strict Separation:** Keep your `tests/` directory entirely outside of your `src/` directory.
+2. **Mirror the Architecture:** Your `tests/` folder should act as a perfect reflection of your `src/my_app/` folder. If you have a module at `src/my_app/utils/text.py`, its corresponding test file should live at `tests/utils/test_text.py`. This mirroring makes finding the relevant tests instant, even in massive codebases.
+3. **The `test_` Prefix Convention:** `pytest` relies on automatic discovery. It will recursively search your entire project and automatically run:
+* Any file named `test_*.py` or `*_test.py`
+* Any function inside those files starting with `test_`
+
+
+
+!!! tip "Best Practice: `__init__.py` in Tests"
+    Notice the `__init__.py` files inside the `tests/` subdirectories. While `pytest` doesn't strictly require them to find your tests, including them prevents name collisions if you happen to have two test files with the exact same name in different subdirectories (e.g., `tests/agents/test_helpers.py` and `tests/utils/test_helpers.py`).
+
+---
+
 ## The `pytest` Progression: From Simple to Production-Ready
 
 We will use `pytest`, the industry standard for Python testing. It automatically discovers any files starting with `test_` and any functions inside them starting with `test_`. To master unit testing, we need to understand that tests scale in complexity alongside our application logic.
