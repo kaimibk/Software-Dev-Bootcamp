@@ -18,6 +18,4 @@ This focuses on professional practices that make Python code reliable and future
 
 ## Unit Testing and Validation
 
-Session 4: This session is all about writing high-quality, testable code. We'll introduce unit testing and practice writing tests for a Python application using the pytest framework. We'll emphasize the principles of test-driven development (TDD) to build features that are robust from the start.
-
-Session 5: We'll focus on data validation and error handling. Students will learn how to write tests that specifically challenge Pydantic models to ensure that incoming data is always correctly formatted. We'll also cover best practices for creating custom validation logic.
+Session 4: This session is all about writing high-quality, testable code. We'll introduce unit testing and practice writing tests for a Python application using the pytest framework. We'll emphasize the principles of test-driven development (TDD) to build features that are robust from the start. Next, we'll introduce data validation and error handling. Students will learn how to write tests that specifically challenge Pydantic models to ensure that incoming data is always correctly formatted. We'll also cover best practices for creating custom validation logic.
