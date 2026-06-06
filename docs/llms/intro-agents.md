@@ -59,10 +59,6 @@ graph TD
     E --> F
     F --> B
     B -->|Action: Finish| G([Final Response to User])
-    
-    classDef llm fill:#f9d0c4,stroke:#333,stroke-width:2px;
-    class B llm;
-
 ```
 
 ### Python Implementation
@@ -137,10 +133,6 @@ graph TD
     E -->|Sufficient Info| F[Synthesize Answer]
     B -->|Requires No Context| F
     F --> G([Final Output])
-    
-    classDef llm fill:#f9d0c4,stroke:#333,stroke-width:2px;
-    class B,E,F llm;
-
 ```
 
 ### The Benefits of the Agentic Approach
