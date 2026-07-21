@@ -104,6 +104,9 @@ extra:
       link: https://kaimi.dev
     - icon: fontawesome/brands/github
       link: https://github.com/kaimibk/
+  analytics:
+    provider: google
+    property: G-2GPER4NZ2E
 
 extra_javascript:
   - javascripts/mathjax.js
